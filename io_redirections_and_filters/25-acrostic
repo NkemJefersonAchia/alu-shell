@@ -1,2 +1,2 @@
 #!/bin/bash
-tail -n +2 | sort | cut -f1 | uniq -c | sort -g -r | head -11 | tr -s " " | cut -d " " -f3
+tr -d '[:punct:]' | awk '{for(i=1;i<=NF;i++) printf substr($i,1,1)} END {print ""}' | fold -w1 | sort | tr -d '\n'
